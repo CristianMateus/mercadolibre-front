@@ -1,9 +1,18 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 
-type Props = {};
+import { SearchBarProps } from "./types";
 
-const SearchBar = (props: Props) => {
-  return <div>SearchBar</div>;
+const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={(event: ChangeEvent<HTMLInputElement>) =>
+        onChange(event.target.value)
+      }
+      placeholder="Search..."
+    />
+  );
 };
 
 export default SearchBar;

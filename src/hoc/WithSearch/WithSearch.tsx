@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTE_PATHS } from "../../Routes";
 import useProductService from "../../hooks/useProductService/useProductService";
+import SearchBar from "../../components/SearchBar";
 
 const withSearch = <P extends object>(
   WrappedComponent: React.ComponentType<P>
@@ -16,10 +17,6 @@ const withSearch = <P extends object>(
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-      setSearchText(event.target.value);
-    };
-
     const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       setSearchQuery(searchText);
@@ -30,21 +27,21 @@ const withSearch = <P extends object>(
       ) {
         navigate(ROUTE_PATHS.home);
       }
-      console.log(searchQuery);
     };
 
     return (
       <div>
         <form onSubmit={handleSearchSubmit}>
-          <input
-            type="text"
-            value={searchText}
-            onChange={handleSearchChange}
-            placeholder="Search..."
-          />
+          <SearchBar value={searchText} onChange={setSearchText} />
           <button type="submit">Search</button>
         </form>
-        <WrappedComponent {...props} />
+        <WrappedComponent
+          {...props}
+          useProductServiceReturn={{
+            categories,
+            products,
+          }}
+        />
       </div>
     );
   };

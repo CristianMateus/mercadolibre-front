@@ -1,5 +1,5 @@
 export interface BaseServiceResponse {
-  author: {
+  author?: {
     name: String;
     lastname: String;
   };

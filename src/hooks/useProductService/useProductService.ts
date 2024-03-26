@@ -19,9 +19,9 @@ const useProductService = ({
       setLoading(true);
       try {
         const result = await productService.getProducts(text);
-        setProducts(result?.items || []);
-        setCategories(result?.categories || []);
-        console.log(result);
+
+        setProducts(result?.data?.items || []);
+        setCategories(result?.data?.categories || []);
       } catch (error) {
         console.error(error);
       } finally {
