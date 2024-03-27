@@ -4,25 +4,22 @@ import { Route, Routes } from "react-router-dom";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import WithSearch from "./hoc/WithSearch";
-import { UseProductServiceReturn } from "./hooks/useProductService/types";
 import { Product } from "./services/ProductService/types";
 
 interface RoutesComponentProps {
-  useProductServiceReturn?: UseProductServiceReturn;
+  products?: Product[];
 }
 
 export const ROUTE_PATHS = {
   home: "/",
   products: "/items",
+  productsSearch: "/items?search=:category",
   product: "/items/:id",
 };
 
-const RoutesComponent: React.FC<RoutesComponentProps> = ({
-  useProductServiceReturn,
-}) => {
+const RoutesComponent: React.FC<RoutesComponentProps> = ({ products }) => {
   const productsProps = {
-    categories: useProductServiceReturn?.categories as string[],
-    products: useProductServiceReturn?.products as Product[],
+    products: products as Product[],
   };
 
   return (

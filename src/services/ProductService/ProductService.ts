@@ -11,14 +11,17 @@ export class ProductService extends BaseService {
     const url = replaceUrlParams(this.urls.GET_PRODUCTS, {
       searchQuery,
     });
-    const responsve = axios.get(url);
-    return await axios.get(url);
+    const result = await axios.get(url);
+    return result;
   };
 
-  getProduct = async (id: string): Promise<GetProductResponse> => {
+  getProduct = async (
+    id: string
+  ): Promise<AxiosResponse<GetProductResponse>> => {
     const url = replaceUrlParams(this.urls.GET_PRODUCT, {
       id,
     });
-    return await axios.get(url);
+    const result = await axios.get(url);
+    return result;
   };
 }

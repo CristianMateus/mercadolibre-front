@@ -1,0 +1,23 @@
+
+@use '../../styles/global-styles'
+
+.searchBar__root
+    background: global-styles.$color-yellow
+    padding: 10px 160px
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 20px
+
+.searchBar__textFieldContainer
+    flex: 1
+    display: flex
+    height: 38px
+    border-radius: global-styles.$border-radius
+    overflow: hidden
+
+.searchBar__textFieldContainer input
+    flex: 1
+
+.searchBar__logo
+    cursor: pointer

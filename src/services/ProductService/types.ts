@@ -20,8 +20,10 @@ export interface Product {
   title: string;
   price: ProductPrice;
   picture: string;
-  condition: string;
+  condition: "new" | "used";
   free_shipping: Boolean;
-  sold_quantity?: Number;
-  description?: String;
+  sold_quantity?: number;
+  description?: string;
+  location?: string;
+  category?: string;
 }

@@ -1,0 +1,35 @@
+@use '../../styles/global-styles'
+
+.card__root
+    display: flex
+    padding: 16px 0px
+    cursor: pointer
+
+.card__root:not(:first-child)
+    border-top: 1px solid global-styles.$color-lightGrey
+
+.card__image_container
+    width: 180px
+    height: 180px
+    min-width: 180px
+    background-size: 100%
+    background-repeat: no-repeat
+    background-position: center
+    border-radius: global-styles.$border-radius
+    margin-right: 16px
+
+.card__data
+    flex: 1
+    padding: 20px 0
+    display: flex
+    justify-content: space-between
+    gap: 60px
+
+.card__data_leftContent
+    font-size: 18px
+
+.card__data_rightLabel
+    text-align: left
+    font-size: 12px
+    color: global-styles.$color-grey
+    min-width: 100px
